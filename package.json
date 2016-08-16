@@ -1,0 +1,31 @@
+{
+    "name": "three-jugs",
+    "version": "0.1.1",
+    "dependencies": {
+        "angular": "^1.2.19",
+        "angular-bootstrap": "^0.12.0"
+    },
+    "devDependencies": {
+        "browserify": "^4.2.0",
+        "gulp": "^3.8.6",
+        "gulp-jshint": "^1.7.1",
+        "gulp-rename": "^1.2.0",
+        "gulp-uglify": "^0.3.1",
+        "vinyl-source-stream": "^0.1.1"
+    },
+    "description": "Logic Puzzle for the IFI Olympiad. Developed by Tore Sund Norderud in 2016. Based on code by Martin Vonheim Larsen.",
+    "main": "gulpfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MAPSuio/three-jugs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MAPSuio/three-jugs/issues"
+    },
+    "homepage": "https://github.com/MAPSuio/three-jugs#readme"
+}

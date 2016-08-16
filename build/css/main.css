@@ -1,0 +1,58 @@
+div {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    display: block;
+}
+
+h1, h3 {
+    margin: 0px;
+    line-height: 39px;
+    vertical-align: middle;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.weigh {
+    line-height: 39px;
+    vertical-align: middle;
+}
+
+.headline {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.jugs {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.jugs-labels {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.weighs {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    border: 0;
+}
+
+#svgJug {
+    background-color: white;
+    padding: 5px 10px;
+    width: 130px;
+    height: 260px;
+}

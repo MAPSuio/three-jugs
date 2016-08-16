@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        <script type="text/javascript" src="js/bundle.js"></script>
+        <title>Divide the Milk!</title>
+    </head>
+    <body ng-app="ThreeJugs">
+        <div id="main" ng-controller="ThreeJugsController">
+            <div class="container">
+                <div class="row headline">
+                    <div class="col-md-12 centered" ng-if="!success()">
+                        <h1 ng-if="numberSelected() == 0">Select bottle to pour from</h1>
+                        <h1 ng-if="numberSelected() == 1">Select bottle to pour to</h1>
+                    </div>
+                    <div class="col-md-12 centered" ng-if="success()">
+                        <h1>Success!</h1>
+                    </div>
+                </div>
+                <div class="row jugs">
+                    <div class="col-md-12">
+                        <div class="btn-group btn-group-lg">
+                            <div class="btn btn-default {{ jug.selected ? 'btn-primary' : '' }}"
+                                 ng-repeat="jug in jugs" ng-click="jug.clicked()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="svgJug" ng-bind-html="jug.draw() | sanitize"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 jugs-labels">
+                                        {{ jug.label() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row weighs">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="list-group">
+                            <div class="list-group-item" ng-repeat="(key, weigh) in weighs track by key">
+                                <div class="row weigh">
+                                    <div class="col-md-2 left">
+                                        <h3>{{ key+1 }}.</h3>
+                                    </div>
+                                    <div class="col-md-10 right">
+                                        <h3>{{ weigh }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
