@@ -4,7 +4,7 @@ require('angular-bootstrap');
 var ThreeJugs = angular.module('ThreeJugs', [
     'ui.bootstrap'
 ]).controller('ThreeJugsController', function ($scope) {
-    function makeJugs(hiWeight, loWeight, numJugs) {
+    function makeJugs() {
         var jugs = [];
 
         for (var i = 0; i < arguments.length; i++) {
@@ -16,11 +16,7 @@ var ThreeJugs = angular.module('ThreeJugs', [
                 },
                 selected: false,
                 draw: function() {
-                    var param = {
-                        pct: 100 * this.contents / this.capacity,
-                        capacity: this.capacity,
-                    };
-                    return drawJug(param);
+                    return drawJug(this);
                 },
                 clicked: function() {
                     if ($scope.numberSelected() == 0) {
@@ -42,7 +38,7 @@ var ThreeJugs = angular.module('ThreeJugs', [
                             toJug.contents += amount;
                             fromJug.contents -= amount;
                             $scope.clearSelected();
-                            $scope.weighs.push("Poured " + amount + " liters from " + fromJug.capacity + " to " + toJug.capacity + ".");
+                            $scope.moves.push("Poured " + amount + " liters from " + fromJug.capacity + " to " + toJug.capacity + ".");
                         } else {
                             fromJug.selected = false;
                             toJug.selected = true;
@@ -52,6 +48,7 @@ var ThreeJugs = angular.module('ThreeJugs', [
             });
         }
 
+        /* Set first jug to have same contents as capacity. */
         jugs[0].contents = jugs[0].capacity;
 
         return jugs;
@@ -97,8 +94,8 @@ var ThreeJugs = angular.module('ThreeJugs', [
         }
     }
 
-    $scope.weighs = [];
-    $scope.weigh = function () {
+    $scope.moves = [];
+    $scope.move = function () {
         var selectedJugs = [];
 
         for (var idx in $scope.jugs) {
@@ -109,7 +106,7 @@ var ThreeJugs = angular.module('ThreeJugs', [
             }
         }
 
-        $scope.weighs.push(selectedJugs)
+        $scope.moves.push(selectedJugs)
     };
 }).filter("sanitize", ['$sce', function($sce) {
     return function(htmlCode){
@@ -117,14 +114,12 @@ var ThreeJugs = angular.module('ThreeJugs', [
     }
 }]);
 
-/* Based on https://jsfiddle.net/rfornal/A2V92/*/
+// Based on https://jsfiddle.net/rfornal/A2V92/
 function drawJug(p) {
     var html = "";
 
     var x = 15 * (12 - p.capacity);
-
-    var iPct = ((230-x) * (1 - (p.pct / 100)));
-    var tPct = 20 + (160 * (1 - (p.pct / 100)));
+    var iPct = (230-x) * (1 - (p.contents / p.capacity));
 
     // OPEN SVG
     html += "<svg width='110px' height='250px' viewBox='0 0 110 250'>\n";
